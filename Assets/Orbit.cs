@@ -35,7 +35,7 @@ public class Orbit : MonoBehaviour {
         //unsafe unchecked
         float dist = Vector3.Distance(moonTest.transform.position, transform.position);
         Vector3 dir = transform.position - moonTest.transform.position;
-        moonTest.GetComponent<Rigidbody>().AddForce(dir * mass);
+        moonTest.GetComponent<Rigidbody>().velocity = (dir * mass);
         Color col = new Color(1 / dist, 0f, 0f);
         Debug.DrawRay(moonTest.transform.position, dir, col);
         PushPerp(dir, dist);
@@ -50,7 +50,7 @@ public class Orbit : MonoBehaviour {
         Vector3 perp = Vector3.Cross(dir, Vector3.forward);
         Color col = new Color(0f, 1 / dist, 0f);
         Debug.DrawRay(moonTest.transform.position, perp, col);
-        moonTest.GetComponent<Rigidbody>().AddForce(perp * mass * 3f);
+        moonTest.GetComponent<Rigidbody>().velocity = (perp * mass * 3f);
 
     }
 
