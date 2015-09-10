@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class ClickBut : Stats {
+//gui button manager
+public class ButtMan : Stats {
 
 	// Use this for initialization
 	void Start () {
