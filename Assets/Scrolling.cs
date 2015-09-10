@@ -21,12 +21,6 @@ public class Scrolling : MonoBehaviour {
         //ensure it's furthest back
         EnsureFurthestBack(sr);
 
-        Texture2D tx = textureFromSprite(sr.sprite);
-
-        Color32 col = AverageColorFromTexture(tx);
-
-        //UnityException: Texture 'space' is not readable, the texture memory can not be accessed from scripts. You can make the texture readable in the Texture Import Settings.
-        Camera.main.backgroundColor = col;
 
 
         //duplicate background
@@ -75,48 +69,4 @@ public class Scrolling : MonoBehaviour {
             Debug.LogWarning(target.name + " set to furthest back with sorting order: " + target.sortingOrder );
         }
     }
-
-
-    /*
-     * http://forum.unity3d.com/threads/average-color-from-texture.145331/
-     */
-    Color32 AverageColorFromTexture(Texture2D tex)
-    {
-
-        Color32[] texColors = tex.GetPixels32();
-        int total = texColors.Length;
-
-        float r = 0;
-        float g = 0;
-        float b = 0;
-
-        for (int i = 0; i < total; i++)
-        {
-            r += texColors[i].r;
-            g += texColors[i].g;
-            b += texColors[i].b;
-        }
-
-        return new Color32((byte)(r / total), (byte)(g / total), (byte)(b / total), 0);
-
-    }
-
-    //http://answers.unity3d.com/questions/651984/convert-sprite-image-to-texture.html
-    public static Texture2D textureFromSprite(Sprite sprite)
-    {
-        if (sprite.rect.width != sprite.texture.width)
-         {
-            Texture2D newText = new Texture2D((int)sprite.rect.width, (int)sprite.rect.height);
-            Color[] newColors = sprite.texture.GetPixels((int)sprite.textureRect.x,
-                                                         (int)sprite.textureRect.y,
-                                                         (int)sprite.textureRect.width,
-                                                         (int)sprite.textureRect.height);
-            newText.SetPixels(newColors);
-            newText.Apply();
-            return newText;
-        }
-        else
-            return sprite.texture;
-    }
-
 }
