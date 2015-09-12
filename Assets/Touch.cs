@@ -1,39 +1,50 @@
 ﻿using UnityEngine;
-using System.Reflection;
-using System.Collections.Generic;
+using System.Collections;
 
-public class TouchCreator
-{
-    static BindingFlags flag = BindingFlags.Instance | BindingFlags.NonPublic;
-    static Dictionary<string, FieldInfo> fields;
+public class Touch : Logger {
 
-    object touch;
+    Vector3 mousePos;   //how odd it is that mouse position is V3 not V2.
 
-    public float deltaTime { get { return ((Touch)touch).deltaTime; } set { fields["m_TimeDelta"].SetValue(touch, value); } }
-    public int tapCount { get { return ((Touch)touch).tapCount; } set { fields["m_TapCount"].SetValue(touch, value); } }
-    public TouchPhase phase { get { return ((Touch)touch).phase; } set { fields["m_Phase"].SetValue(touch, value); } }
-    public Vector2 deltaPosition { get { return ((Touch)touch).deltaPosition; } set { fields["m_PositionDelta"].SetValue(touch, value); } }
-    public int fingerId { get { return ((Touch)touch).fingerId; } set { fields["m_FingerId"].SetValue(touch, value); } }
-    public Vector2 position { get { return ((Touch)touch).position; } set { fields["m_Position"].SetValue(touch, value); } }
-    public Vector2 rawPosition { get { return ((Touch)touch).rawPosition; } set { fields["m_RawPosition"].SetValue(touch, value); } }
+	// Use this for initialization
+	void Start () {
+        mousePos = Input.mousePosition;
+        Log("Mouse pos: " + mousePos + " (start)");
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        TouchTest();        
+	}
 
-    public Touch Create()
+    void TouchTest()
     {
-        return (Touch)touch;
-    }
+        //checking which of the following Input methods fire on touch on Android.
 
-    public TouchCreator()
-    {
-        touch = new Touch();
-    }
+        //works mice as well as touches #1, #2 and #3 only
+        if (Input.GetMouseButtonDown(0))
+            Log("Pressed left click.");
 
-    static TouchCreator()
-    {
-        fields = new Dictionary<string, FieldInfo>();
-        foreach (var f in typeof(Touch).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
+        if (Input.GetMouseButtonDown(1))
+            Log("Pressed right click.");
+
+        if (Input.GetMouseButtonDown(2))
+            Log("Pressed middle click.");
+
+        //works for mice only (tested Android 5.1 Xperia Z3)
+        for (int i = 3; i < 7; i++ )
+            if (Input.GetMouseButtonDown(i))
+                Log(i + " click.");
+
+
+        //works for touches also
+        /*
+        if (Input.mousePosition != mousePos)
         {
-            fields.Add(f.Name, f);
-            Debug.Log("name: " + f.Name);
+            mousePos = Input.mousePosition;
+            Log("Mouse pos: " + mousePos);
         }
+        */
+
+        //Log(Input.mousePosition);
     }
 }

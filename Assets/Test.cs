@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Test : Stats {
+public class Test : Logger {
 
 	// Use this for initialization
 	void Start () {

@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Stats : MonoBehaviour {
+public class Logger : MonoBehaviour {
 
 	//box
     public static float margin;

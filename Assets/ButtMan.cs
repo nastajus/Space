@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 //gui button manager
-public class ButtMan : Stats {
+public class ButtMan : Logger {
 
 	// Use this for initialization
 	void Start () {

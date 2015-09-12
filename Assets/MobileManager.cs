@@ -2,7 +2,7 @@
 using System.Collections;
 
 //manages keypresses for Android Menu system (only for now)
-public class MobileManager : Stats {
+public class MobileManager : Logger {
 
 	// Use this for initialization
 	void Start () {

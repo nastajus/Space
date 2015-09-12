@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Moon : Stats {
+public class Moon : Logger {
 
     private static GameObject earth;
     private static GameObject moon;
@@ -14,7 +14,7 @@ public class Moon : Stats {
         moon = gameObject; //just for readability
         
         angle = 180 + FindAngle(moon.transform.position, earth.transform.position);
-        Log(angle + "(1)");
+        Log("Moon angle: " + angle + "(start)");
 
 	}
 	

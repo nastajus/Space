@@ -13,12 +13,12 @@ public class Utils : MonoBehaviour {
 
         if (percentage < minPercentage)
         {
-            Stats.Log("Percentage input <color=maroon>too small</color>, increased from " + percentage + " to " + minPercentage);
+            Logger.Log("Percentage input <color=maroon>too small</color>, increased from " + percentage + " to " + minPercentage);
             percentage = minPercentage;
         }
         else if (percentage > maxPercentage)
         {
-            Stats.Log("Percentage input <color=maroon>too large</color>, <color=orange>decreased from " + percentage + " to " + maxPercentage);
+            Logger.Log("Percentage input <color=maroon>too large</color>, <color=orange>decreased from " + percentage + " to " + maxPercentage);
             percentage = maxPercentage;
         }
         float pixels = percentage * relativeTo;
