@@ -33,10 +33,10 @@ public class ButtMan : Stats {
         //alternatively, I could change the accessor to "static Left()" instead. 
         //I'm not entirely sure of the consequences, I just remember problems in the past.
         //I'll try the stsatic approach anyways, to learn
-        Moon2.Left();
+        Moon.Move(-1);
     }
     public void OnClickRight()
     {
-        Moon2.Right();
+        Moon.Move(1);
     }
 }
