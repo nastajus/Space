@@ -26,12 +26,11 @@ public class Stats : MonoBehaviour {
 	void Start () {		
 	}
 
-    // Note: this is horribly inefficient, playing and immediately pausing causes 546 logs for 3 objects.
+    // Note: this is horribly inefficient, simply playing and immediately pausing causes 546 logs for 3 objects.
     // This would be better refactored into a singleton object, but fuck that for now.
     // Let it be wasteful until I have a relevant performance impact
 	void OnGUI(){
 
-        Debug.Log(this.name);
         if (!guiInitDone) { InitGUI(); }
         GUILayout.BeginArea(rectDebugArea);
         scrollPosition = GUILayout.BeginScrollView(scrollPosition, GUILayout.Width(rectDebugArea.width), GUILayout.Height(rectDebugArea.height));
@@ -57,7 +56,7 @@ public class Stats : MonoBehaviour {
     {
         margin = Utils.PercentToPixel(0.05f, Screen.width);
         float debugAreaHeight = Utils.PercentToPixel(0.20f, Screen.height);
-        rectDebugArea = new Rect(margin, debugAreaHeight - margin, Screen.width - margin * 2, debugAreaHeight);
+        rectDebugArea = new Rect(margin * 3, debugAreaHeight - margin, Screen.width - margin * 6, debugAreaHeight);
         //Stats.DebugLogGUI(rectDebugArea);
 
         scrollPosition = Vector2.zero;
