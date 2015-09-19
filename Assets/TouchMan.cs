@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TouchMann : Logger {
+public class TouchMan : Logger {
 
     Vector3 mousePos;   //how odd it is that mouse position is V3 not V2.
 
@@ -26,7 +26,7 @@ public class TouchMann : Logger {
 
         }
         if (fingerCount > 0)
-            print("User has " + fingerCount + " finger(s) touching the screen");
+        //    Log ("User has " + fingerCount + " finger(s) touching the screen");
 
 
         //checking which of the following Input methods fire on touch on Android.

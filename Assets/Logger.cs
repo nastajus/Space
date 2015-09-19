@@ -96,6 +96,7 @@ public class Logger : MonoBehaviour {
         debugCumulativeStr += output;
         debugStrChanged = true; //used to check to push scrollview of debugArea to bottom
         Debug.Log(output.Substring(1)); //sub bc "\n"
+        //16560 max char length
     }
 
     public static void Log(Vector3 vect)
