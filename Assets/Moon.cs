@@ -48,7 +48,7 @@ public class Moon : Logger {
 
             //wraps in underneath from left side
             angle = nextAngle;
-            Log(angle);
+            //Log(angle);
         }
     }
 

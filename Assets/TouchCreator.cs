@@ -17,20 +17,20 @@ public class TouchCreator
     public Vector2 position { get { return ((TouchCreator)touch).position; } set { fields["m_Position"].SetValue(touch, value); } }
     public Vector2 rawPosition { get { return ((TouchCreator)touch).rawPosition; } set { fields["m_RawPosition"].SetValue(touch, value); } }
 
-    public Touch Create()
+    public TouchMan Create()
     {
-        return (Touch)touch;
+        return (TouchMan)touch;
     }
 
     public TouchCreator()
     {
-        touch = new Touch();
+        touch = new TouchMan();
     }
 
     static TouchCreator()
     {
         fields = new Dictionary<string, FieldInfo>();
-        foreach (var f in typeof(Touch).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
+        foreach (var f in typeof(TouchMan).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
         {
             fields.Add(f.Name, f);
             Debug.Log("name: " + f.Name);

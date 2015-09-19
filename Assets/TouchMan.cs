@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TouchMan : Logger {
+public class TouchMann : Logger {
 
     Vector3 mousePos;   //how odd it is that mouse position is V3 not V2.
 
