@@ -28,7 +28,7 @@ public class Moon : Logger {
     // Move moon on circular path relative to earth.
     // Note this doesn't obey physics, it's a fake orbit.
     // When moveDir is -1, it means left when moon is above earth. +1 is right.
-    public static void Move(float moveDir)
+    protected void Move(float moveDir) 
     {
         Vector3 dir = (earth.transform.position - moon.transform.position).normalized;
         float dist = Vector3.Distance(earth.transform.position, moon.transform.position);
@@ -50,6 +50,15 @@ public class Moon : Logger {
             angle = nextAngle;
             //Log(angle);
         }
+    }
+
+    public void LeftPressed()
+    {
+        Move(-1);
+    }
+    public void RightPressed()
+    {
+        Move(1);
     }
 
     private float FindAngle(Vector3 p1, Vector3 p2){
